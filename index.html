@@ -9,11 +9,26 @@
   </head>
   <body class="bg-black flex flex-col gap-4 items-center min-h-screen">
     <h1 class="text-white font-sans">World Editor</h1>
-    <canvas id="myCanvas" class="bg-green-500 w-[600px] h-[600px]"></canvas>
+    <canvas id="myCanvas" class="bg-green-500"></canvas>
+
+    <script type="module">
+      import { Graph } from "./js/math/graph.js";
+      import { Point } from "./js/primitives/point.js";
+      import { Segment } from "./js/primitives/segment.js";
+
+      myCanvas.width = 600;
+      myCanvas.height = 600;
+      const ctx = myCanvas.getContext("2d");
+
+      const p1 = new Point(100, 100);
+      const p2 = new Point(300, 200);
+      const p3 = new Point(300, 300);
+      const p4 = new Point(400, 400);
+
+      const s1 = new Segment(p1, p2);
+
+      const graph = new Graph([p1, p2, p3, p4], [s1]);
+      graph.draw(ctx);
+    </script>
   </body>
-  <script>
-    const ctx = myCanvas.getContext("2d");
-    const graph = new Graph();
-    graph.draw(ctx);
-  </script>
 </html>
