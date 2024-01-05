@@ -1,34 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>World Editor</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-black flex flex-col gap-4 items-center min-h-screen">
-    <h1 class="text-white font-sans">World Editor</h1>
-    <canvas id="myCanvas" class="bg-green-500"></canvas>
+<head>
+    <title>Self-driving car - No libraries</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="carCanvas"></canvas>
+    <div id="verticalButtons">
+        <button onclick="save()">💾</button>
+        <button onclick="discard()">🗑️</button>
+    </div>
+    <div>
+      <canvas id="networkCanvas"></canvas>
+      <canvas id="miniMapCanvas"></canvas>
+    </div>
 
-    <script type="module">
-      import { Graph } from "./js/math/graph.js";
-      import { Point } from "./js/primitives/point.js";
-      import { Segment } from "./js/primitives/segment.js";
+    <script src="world/js/world.js"></script>
+    <script src="world/js/viewport.js"></script>
+    <script src="world/js/markings/marking.js"></script>
+    <script src="world/js/markings/stop.js"></script>
+    <script src="world/js/markings/start.js"></script>
+    <script src="world/js/markings/crossing.js"></script>
+    <script src="world/js/markings/parking.js"></script>
+    <script src="world/js/markings/light.js"></script>
+    <script src="world/js/markings/target.js"></script>
+    <script src="world/js/markings/yield.js"></script>
+    <script src="world/js/editors/markingEditor.js"></script>
+    <script src="world/js/editors/graphEditor.js"></script>
+    <script src="world/js/editors/crossingEditor.js"></script>
+    <script src="world/js/editors/stopEditor.js"></script>
+    <script src="world/js/editors/startEditor.js"></script>
+    <script src="world/js/editors/parkingEditor.js"></script>
+    <script src="world/js/editors/lightEditor.js"></script>
+    <script src="world/js/editors/targetEditor.js"></script>
+    <script src="world/js/editors/yieldEditor.js"></script>
+    <script src="world/js/items/tree.js"></script>
+    <script src="world/js/items/building.js"></script>
+    <script src="world/js/math/utils.js"></script>
+    <script src="world/js/math/graph.js"></script>
+    <script src="world/js/primitives/point.js"></script>
+    <script src="world/js/primitives/segment.js"></script>
+    <script src="world/js/primitives/polygon.js"></script>
+    <script src="world/js/primitives/envelope.js"></script>
 
-      myCanvas.width = 600;
-      myCanvas.height = 600;
-      const ctx = myCanvas.getContext("2d");
+    <script src="world/saves/big.world"></script>
 
-      const p1 = new Point(100, 100);
-      const p2 = new Point(300, 200);
-      const p3 = new Point(300, 300);
-      const p4 = new Point(400, 400);
-
-      const s1 = new Segment(p1, p2);
-
-      const graph = new Graph([p1, p2, p3, p4], [s1]);
-      graph.draw(ctx);
-    </script>
-  </body>
+    <script src="miniMap.js"></script>
+    <script src="visualizer.js"></script>
+    <script src="network.js"></script>
+    <script src="sensor.js"></script>
+    <script src="utils.js"></script>
+    <script src="controls.js"></script>
+    <script src="car.js"></script>
+    <script src="main.js"></script>
+</body>
 </html>
